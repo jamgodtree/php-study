@@ -1,0 +1,17 @@
+- name: Add MySQL Repository
+  yum:
+    name: "http://dev.mysql.com/get/mysql57-community-release-el7-8.noarch.rpm"
+    state: present
+
+- name: Install MySQL
+  yum:
+    name: "{{ item }}-{{ mysql.version }}"
+    state: present
+    disablerepo: "mysql55-community,mysql56-community"
+    enablerepo: "mysql57-community"
+  with_items:
+    - mysql-community-client
+    - mysql-community-devel
+    - mysql-community-libs
+    - mysql-community-libs-compat
+    - mysql-community-server

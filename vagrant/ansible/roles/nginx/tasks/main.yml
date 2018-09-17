@@ -1,0 +1,14 @@
+- name: put nginx repo
+  template:
+    src: "nginx.repo.j2"
+    dest: "/etc/yum.repos.d/nginx.repo"
+    owner: "root"
+    group: "root"
+
+- name: install nginx
+  yum:
+    name: "nginx-{{ nginx.version }}"
+    state: "present"
+ 
+- name: put service.conf 
+  templete: "/"

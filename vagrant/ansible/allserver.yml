@@ -1,0 +1,6 @@
+- name: allserver
+  hosts: allserver
+  become: yes
+  roles:
+    - mysql
+    - nginx
